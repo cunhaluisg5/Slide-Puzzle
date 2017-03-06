@@ -4,14 +4,13 @@
 		<title>Slide Puzzle</title>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="estilo.css" />
-		<script src="script.js" ></script>
 	</head>
 	<body>
 		<h1>Slide Puzzle</h1>
 		<div id="cenario">
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
+			<div id="primeiro">1</div>
+			<div id="segundo">2</div>
+			<div id="terceiro">3</div>
 			<div>4</div>
 			<div>5</div>
 			<div>6</div>
@@ -38,6 +37,20 @@
 					}
 				};
 			}
+
+			function mover() {
+				tabuleiro[0][0] = 1;
+				tabuleiro[0][1] = 0;
+			}
+
+			function jogo() {
+				mover();
+				atualizar();
+			}
+
+			atualizar();
+			var p = document.getElementById("primeiro");
+			p.addEventListener("click", jogo);
 		</script>
 	</body>
 </html>
