@@ -38,19 +38,53 @@
 				};
 			}
 
-			function mover() {
-				tabuleiro[0][0] = 1;
-				tabuleiro[0][1] = 0;
+			function mover(x) {
+				console.log(x);
+				for(var l = 0; l < 3; l++){
+					for(var c = 0; c < 3; c++){
+						if(tabuleiro[l][c]==0){
+							if(tabuleiro[l][c-1]==x){
+								troca(tabuleiro[l][c], tabuleiro[l][c-1], x);
+								return;
+							}
+							if(tabuleiro[l][c+1]==x){
+								//troca
+								return;
+							}
+							if(tabuleiro[l-1][c]==x){
+								//troca
+								return;
+							}
+							if(tabuleiro[l+1][c]==x){
+								//troca
+								return;
+							}
+														
+
+						}
+					}
+				}
 			}
 
-			function jogo() {
-				mover();
-				atualizar();
+			function troca(a, b, c){
+				var aux = a;
+				a = c;
+				b = aux;
+				}
+
+			function jogo(k) {
+				return function(){
+					mover(k);
+					atualizar();
+				}	
 			}
 
 			atualizar();
-			var p = cenarioE.children[0];
-			p.addEventListener("click", jogo);
+
+			for(var i = 0; i < 8; i++){
+				var p = cenarioE.children[i];
+				p.addEventListener("click", jogo(i+1));
+		}
 		</script>
 	</body>
 </html>
