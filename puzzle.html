@@ -42,34 +42,27 @@
 				console.log(x);
 				for(var l = 0; l < 3; l++){
 					for(var c = 0; c < 3; c++){
-						if(tabuleiro[l][c]==0){
-							if(tabuleiro[l][c-1]==x){
-								troca(tabuleiro[l][c], tabuleiro[l][c-1], x);
+						if(tabuleiro[l][c] == x){
+							if(troca(l, c-1, l, c))
 								return;
-							}
-							if(tabuleiro[l][c+1]==x){
-								//troca
+							if(troca(l-1, c, l, c))
 								return;
-							}
-							if(tabuleiro[l-1][c]==x){
-								//troca
+							if(troca(l, c+1, l, c))
 								return;
-							}
-							if(tabuleiro[l+1][c]==x){
-								//troca
+							if(troca(l+1, c, l, c))
 								return;
-							}
-														
-
 						}
 					}
 				}
 			}
 
-			function troca(a, b, c){
-				var aux = a;
-				a = c;
-				b = aux;
+			function troca(linha, coluna, l, c){
+				if (linha < 0 || coluna < 0 || linha > 3 || coluna > 3 || tabuleiro [linha][coluna] != 0) return false;
+				console.log(tabuleiro);
+				tabuleiro[linha][coluna]=tabuleiro[l][c];
+				tabuleiro[l][c] = 0;
+				console.log(tabuleiro);
+				return true;
 				}
 
 			function jogo(k) {
